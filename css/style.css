@@ -60,10 +60,12 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 .heading-primary__main {
   display: block;
@@ -117,4 +119,72 @@ body {
     opacity: 1;
     transform: translate(0);
   }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/* Using pseudo classes to target certain elements */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  display: inline-block;
+  border-radius: 8rem;
+  /* The transform and hover will be animated via this transform property. The transition property has to be on the initial state */
+  transition: all 0.2s;
+  position: relative;
+}
+.btn:hover {
+  transform: translateY(-0.25rem);
+  /* Box shadow: first is offset in x direction, next is offset in y direction, next value is blur*/
+  box-shadow: 0 0.625rem 1.25rem
+    rgba(0, 0, 0, 0.2);
+}
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0.31rem 0.625rem
+    rgba(0, 0, 0, 0.2);
+}
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* Adding the :after pseudo element adds a virtual element right after the element we are selecting */
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  /* Use absoulte positioning to put our after element behind our button */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  /* scale increases the size of the element, the opacity 0 has the button fade out */
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
