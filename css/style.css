@@ -10,7 +10,10 @@ Dark green: #28b485
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
 }
 
 /* Set project-wide font-selectors */
@@ -18,10 +21,11 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana,
     sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.7;
   color: #777;
   padding: 1.875rem;
+  box-sizing: border-box;
 }
 
 .header {
@@ -44,18 +48,18 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 2.5rem;
   left: 2.5rem;
 }
-.logo {
+.header__logo {
   height: 2.188rem;
 }
-.logo:hover {
+.header__logo:hover {
   animation: moveInRight 1s ease-out;
 }
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -155,7 +159,7 @@ body {
   box-shadow: 0 0 0.31rem 0.625rem
     rgba(0, 0, 0, 0.2);
 }
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -174,7 +178,7 @@ body {
   z-index: -1;
   transition: all 0.4s;
 }
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 
@@ -184,7 +188,7 @@ body {
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom 0.5s ease-out 0.75s;
   animation-fill-mode: backwards;
 }
